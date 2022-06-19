@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { actors } from "../data";
 
 function Actors() {
-  return <div>{/*{code here}*/}</div>;
+  const [actorsData] = useState([...actors]);
+  const actorsDataDisplay = actorsData.map(actor =>{
+    return (
+      <div key={actor.name}>
+        <h2>Name: {actor.name}</h2>
+        <span>Movies:</span><br></br>
+        <ul>
+          {actor.movies.map(movie => <li key={movie}>{movie}</li>)}
+        </ul>
+      </div>
+    ) 
+  }
+)
+
+  return (
+    <div>
+      <h1>Actors Page</h1>
+      {actorsDataDisplay}
+    </div>
+  )
 }
 
 export default Actors;
